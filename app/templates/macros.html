@@ -1,39 +1,28 @@
-{% macro displayCategories(category_list) %}
-    {% for category in category_list %}
-        <li id="categories">
-            <a class="category-button btn btn-default" href="/category/{{category.id}}"><h3>{{category.name}}</h3></a>
-        </li>
-    {% endfor %}
+{% macro displayPitches(pitches_list) %}
+  {% for pitch in pitches_list %}
+  <div class="container">
+    <div class="col-xs-12 col-sm-4 col-md-12 col-lg-12">
+      <h1>{{pitch.title}}</h1>
+      <h3>{{pitch.body}}</h3>
+      <h6><a href='#'>Upvotes: </a>{{pitch.upvotes}}</h6>
+      <h6><a href='#'>Downvotes: </a>{{pitch.downvotes}}</h6>
+      <h6><a href='/comment'>Write a comment</a></h6>
+      <h6><a href="/view-comments/{{pitch.id}}">Read comments</a></h6>
+    </div>
+  </div>
+  {% endfor %}
 {% endmacro %}
 
-{% macro displayPitches(pitch_list) %}
-    {% for pitch in pitch_list %}
-        <div class="well col-xs-12 col-sm-4 col-md-4 col-lg-4 pitch-card">
-            <div class="row avatar-row">
-                <div class="col-md-2 col-lg-2" id="avatar-column">
-                    <img id="avatar" src="/static/img/avatar.png" alt="Avatar">
-                </div>
-                <div class="col-md-8 col-lg-8">
-                    <h4>{{pitch.user.username}}</h4>
-                    <p>Posted on {{pitch.time}}</p>
-                </div>
-            </div><hr>
-            <div class="row pitch-content">
-                <h4><b>{{pitch.title}}</b></h4>
-                <p>{{pitch.post}}</p>
-            </div>
-            <a href="/pitch/reviews/{{pitch.id}}">View Reviews</a>            
-        </div>
-    {% endfor %}
-{% endmacro %}
-
-{% macro displayReviews(review_list) %}
-    {% for review in review_list %}
-        <div class="well reviews-well">
-            <li>
-                <h3>{{review.post_review}}</h3>
-                <p>by {{review.user.username}}</p>
-            </li>
-        </div>
-    {% endfor %}
+{% macro displayComments(comments_list) %}
+{% for comment in comments_list %}
+<div class="container">
+  <div class="col-xs-12 col-sm-4 col-md-2 col-lg-12">
+    <ul>
+      <li><h1>{{comment.comment}}</h1></li>
+    </ul>
+    <h6>Posted At: {{comment.posted}}</h6>
+    <!-- <h6>Written in reference to pitch: {{comment.pitch}}</h6> -->
+  </div>
+</div>
+{% endfor %}
 {% endmacro %}
