@@ -1,105 +1,23 @@
 {% extends 'base.html' %}
 {% import 'macros.html' as macro %}
-{% import 'bootstrap/wtf.html' as wtf %}
 
+{% block styles %}
+{{super()}}
+<link rel='stylesheet' href="{{url_for('static', filename='css/index.css')}}">
+{% endblock %}
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="utf-8">
-    
-    {% if title %}
-    <title> {{ title }}</title>
-    {% else %}
-    <title> Welcome to PITCHES website </title>
-    {% endif %}
-</head>
-
-<body>
+  <head>
+    <meta charset='utf-8'>
+    <title>Jitches</title>
+    <link rel="shortcut icon" href="../static/images/icon.ico"/>
+  </head>
+  <body>
     {% block content %}
-    <!-- header -->
-
-    <!-- section -->
-    <div class="container-fluid" style="background-color:cornsilk;">
-        <div class="well col-md-4" style="padding-top: 0px; " >
-            <img src="{{ url_for('static', filename='photos/download.png') }}" alt="" style="height: 100px;">
-            <h4><strong>Create Pitch </strong></h4><span></span>
-            {{ wtf.quick_form(form)}}
-            
-        </div>
-        <div class="col-md-8">
-            <div>
-                {% for post in posts %}
-                <div class="card col-xs-5" style="margin-left: 15px; margin-bottom: 2px;">
-                    <div class="card-header" style="margin-bottom: 10px;">
-                        <p><strong>CATEGORY:</strong>{{ post.category }}</p>
-                    </div>
-                    <div class="card-body">
-                        <p> <strong>PITCH:</strong>{{ post.content }}</p>
-                        <p>{{post.postedOn}}</p>
-                        <button class="btn btn-info">upvote</button>
-                        <button class="btn btn-info">downvote</button>
-                    </div>
-                    <div class="card-footer">
-                        <a href="{{post.image}}"></a>
-                        <p text-align='right'span class="glyphicon glyphicon-user"> {{ post.author }}</span></p>
-                    </div>
-                </div>
-                
-                {% endfor %}
-            </div>
-        </div>
-    </div>
-    <!-- Footer -->
-    <section id="footer">
-        <div class="container-fluid" style="background-image: linear-gradient(to right,#6bf8f3,#3DCCC7, #C4FFF9, #C0F1F4,#68D8D6, #3DCCC7, #07BEB8);">
-            <div class="row text-center text-xs-center text-sm-left text-md-left">
-                <div class="col-xs-12 col-sm-4 col-md-4">
-                    <h5>About</h5>
-                    <ul class="list-unstyled quick-links">
-                        <li><a href="#"><i class="fa fa-angle-double-right"></i>Home</a></li>
-                        <li><a href="#"><i class="fa fa-angle-double-right"></i>About</a></li>
-                    </ul>
-                </div>
-                <div class="col-xs-12 col-sm-4 col-md-4">
-                    <h5>Quick links</h5>
-                    <ul class="list-unstyled quick-links">
-                        <li><a href="#"><i class="fa fa-angle-double-right"></i>Home</a></li>
-                        <li><a href="#"><i class="fa fa-angle-double-right"></i>About</a></li>
-                </div>
-                <div class="col-xs-12 col-sm-4 col-md-4">
-                    <h5>Categories</h5>
-                    <ul class="list-unstyled quick-links">
-                        <li><a href="#"><i class="fa fa-angle-double-right"></i>Home</a></li>
-                        <li><a href="#"><i class="fa fa-angle-double-right"></i>About</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
-                    <p class="h6">&copy All right Reversed.Jason Muchiri</a></p>
-                </div>
-                </hr>
-            </div>
-        </div>
-        <style>
-            #footer {
-                bottom: 0;
-                width: 100%;
-                background: #6cf;
-                font-family: fantasy;
-                text-align: center;
-            }
-            h4 {
-                color: crimson;
-                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            }
-            a {
-                font-family: 'Muli', sans-serif;
-            }
-        </style>
-    </section>
-    {% endblock%}
-</body>
-
+    <span class='blinking'><h1>Jitches</h1></span>
+    <h1>{{message}}</h1>
+    <hr>
+    {{macro.displayPitches(pitches)}}
+    {% endblock %}
+  </body>
 </html>
