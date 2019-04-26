@@ -7,7 +7,7 @@ def setUp(self):
   self.new_comment = Comments(pitch_id=12345, pitch_title='Comments on pitches', pitch_comment='This pitch has promise', user=self.user_James)
 
 def tearDown(self):
-  Review.query.delete()
+  Comments.query.delete()
   User.query.delete()
 
 def test_check_instance_variables(self):

@@ -10,13 +10,14 @@ from .forms import PitchForm, CommentForm
 from ..pitches import get_pitch
 
 @main.route('/')
-@login_required
+
 def index():
   pitches=Pitch.query.all()
   title = 'Welcome to Pitches'
   return render_template('index.html', title=title, pitches=pitches)
 
 @main.route('/profile/<uname>/<id>')
+@login_required
 def profile(id, uname):
   user = User.query.filter_by(username = uname)
   pitches = Pitch.query.filter_by(id=id)
@@ -99,6 +100,7 @@ def view_comments(id):
   return render_template('comments.html', message=message, comments=comments, pitch=pitch)
 
 @main.route('/delete/<id>')
+@login_required
 def pitch_delete(id):
   pitch = Pitch.query.filter_by(id=id)
   return pitch.delete_pitch()
