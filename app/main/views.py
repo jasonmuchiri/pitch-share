@@ -81,13 +81,13 @@ def get_technology():
     message='Home of Tech pitches'
   return render_template('index.html', pitches=pitches, title=title, message=message)
 
-@main.route('/misc')
-def get_misc():
-  pitches = Pitch.query.filter_by(category='misc')
-  title='Pitches Misc. Edition'
-  message='There are no pitches in the Misc. section. Go back to home to continue viewing'
+@main.route('/art')
+def get_art():
+  pitches = Pitch.query.filter_by(category='art')
+  title='Pitches Art Edition'
+  message='There are no pitches in the Art section. Go back to home to continue viewing'
   if pitches is not 0:
-    message='Home of Misc. pitches'
+    message='Home of Artistic pitches'
   return render_template('index.html', pitches=pitches, title=title, message=message)
 
 @main.route('/view-comments/<id>')
