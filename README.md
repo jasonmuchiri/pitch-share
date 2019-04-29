@@ -12,7 +12,7 @@ An application where users will submit their one minute pitches and other users 
 
 ## Project's set up instructions
 
-To start using this news-highlight app, use the following commands:
+To start using this pitches app, use the following commands:
 
 - `git clone` ~ This will automatically clone the repository to your local machine.
 
