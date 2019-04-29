@@ -86,7 +86,7 @@ To start using this news-highlight app, use the following commands:
 
 ## Live link to the application's website in heroku
 
-
+https://pitch-share.herokuapp.com/
 
 ## Contacts
 
